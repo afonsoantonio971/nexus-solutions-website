@@ -94,7 +94,7 @@
             text-align: justify;
         }
 
-        /* === ESTILOS DO CARROSSEL (CORRIGIDO) === */
+        /* === ESTILOS DO CARROSSEL === */
         #gallery {
             padding: 40px 0;
             overflow: hidden; 
@@ -103,13 +103,11 @@
 
         .carousel-track {
             display: flex;
-            /* 100% (slides originais) + 50% (slides duplicados) = 150% de largura visível */
             width: 150%; 
             transition: transform 1s ease-in-out; 
         }
 
         .carousel-slide {
-            /* 1/6 da largura total do track, garantindo 3/6 (50%) visíveis */
             flex: 0 0 16.666%; 
             box-sizing: border-box;
             padding: 0 10px;
@@ -153,7 +151,7 @@
             margin-bottom: 15px;
         }
         
-        /* === ESTILO DE CONTATO E RODAPÉ (MANTIDO) === */
+        /* === ESTILO DE CONTATO E RODAPÉ === */
         .contact-form {
             max-width: 600px;
             margin: 0 auto;
@@ -161,7 +159,7 @@
             padding: 40px;
             border-radius: 10px;
         }
-        
+
         .contact-form label { display: block; text-align: left; margin-bottom: 5px; font-weight: bold; }
         .contact-form input[type="text"], .contact-form input[type="email"], .contact-form textarea { width: 100%; padding: 15px; margin-bottom: 20px; border: none; border-radius: 5px; background-color: rgba(255, 255, 255, 0.9); color: #005691; font-size: 1em; box-sizing: border-box; }
         .contact-form textarea { min-height: 150px; }
@@ -210,6 +208,10 @@
                     <div class="carousel-slide"><img src="img6.png" alt="Exemplo de RPA 6"></div>
                     
                     <div class="carousel-slide"><img src="img1.png" alt="Exemplo de Chatbot 1"></div>
+                    <div class="carousel-slide"><img src="img2.png" alt="Exemplo de Automação 2"></div>
+                    <div class="carousel-slide"><img src="img3.png" alt="Exemplo de Landing Page 3"></div>
+
+                     <div class="carousel-slide"><img src="img1.png" alt="Exemplo de Chatbot 1"></div>
                     <div class="carousel-slide"><img src="img2.png" alt="Exemplo de Automação 2"></div>
                     <div class="carousel-slide"><img src="img3.png" alt="Exemplo de Landing Page 3"></div>
                     
@@ -269,7 +271,7 @@
                 <p>E-mail: **nexussolutions548@gmail.com**</p>
             </div>
 
-            <form name="contato-geral" method="POST" data-netlify="true" class="contact-form">
+            <form action="https://formspree.io/f/xnqeeeyv" method="POST" class="contact-form">
                 
                 <label for="nome">Nome:</label>
                 <input type="text" id="nome" name="nome" required>
@@ -287,7 +289,7 @@
             </form>
             
             <div style="margin-top: 30px; font-size: 0.9em;">
-                **Lembrete:** Para o formulário funcionar, publique este código no Netlify!
+                **Lembrete:** Para o envio funcionar, você deve **confirmar o e-mail** que o Formspree enviará para **nexussolutions548@gmail.com** após a primeira submissão!
             </div>
         </section>
 
@@ -305,34 +307,29 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const track = document.getElementById('carouselTrack');
-            // Temos 6 slides originais + 3 duplicados = 9 slides
-            const totalSlidesVisible = 3; // Quantos slides cabem na tela
-            const totalOriginalSlides = 6; // Total de imagens únicas
-            const slideWidthUnit = 100 / (totalOriginalSlides + totalSlidesVisible); // 100% / 9 = 11.111%
+            const totalSlidesVisible = 3; 
+            const totalOriginalSlides = 6; 
+            const slideWidthUnit = 100 / (totalOriginalSlides + totalSlidesVisible); 
             
-            let currentSlide = 0; // Começa no primeiro conjunto
+            let currentSlide = 0; 
 
             function moveCarousel() {
                 currentSlide++;
 
-                // Calcula o valor da translação (porcentagem da largura total)
                 const translateX = -(currentSlide * (100 / (totalOriginalSlides + totalSlidesVisible)) * totalOriginalSlides);
                 
                 track.style.transform = `translateX(${translateX}%)`;
 
-                // Verifica se chegamos ao final do conjunto original de slides
                 if (currentSlide >= totalOriginalSlides / totalSlidesVisible) {
-                    // Após a transição (1 segundo), reseta a posição para o início (sem transição visível)
                     setTimeout(() => {
-                        track.style.transition = 'none'; // Remove a transição suave
+                        track.style.transition = 'none'; 
                         track.style.transform = 'translateX(0)';
-                        currentSlide = 0; // Volta para o início
+                        currentSlide = 0; 
 
-                        // Reativa a transição suave após um breve momento
                         setTimeout(() => {
                             track.style.transition = 'transform 1s ease-in-out';
                         }, 50); 
-                    }, 1000); // Deve ser igual à duração da transição CSS (1s)
+                    }, 1000); 
                 }
             }
 
