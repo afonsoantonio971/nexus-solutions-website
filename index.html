@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nexus Solutions - Site Oficial</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* CSS GERAL */
         body {
@@ -17,38 +18,158 @@
 
         /* ESTILO DO CABEÇALHO (HEADER) */
         header {
-            background-color: rgba(0, 0, 0, 0.3); /* Fundo levemente transparente */
-            padding: 10px 40px; /* Reduzi o padding vertical para acomodar o logo */
-            display: flex; /* Usamos Flexbox para alinhar itens */
-            align-items: center; /* Alinha verticalmente os itens no centro */
-            justify-content: space-between; /* Coloca o logo na esquerda e outros itens na direita (se houver) */
+            background-color: rgba(0, 0, 0, 0.3); 
+            padding: 10px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between; 
+            position: sticky; 
+            top: 0;
+            z-index: 1000;
         }
 
-        /* ESTILO DO LOGO */
+        /* LOGO E TEXTO */
         .logo-container {
-            display: flex; /* Para alinhar o logo com o texto Nexus Solutions se necessário */
+            display: flex;
             align-items: center;
         }
 
         .logo-container img {
-            height: 50px; /* Altura do logo */
-            margin-right: 15px; /* Espaço entre o logo e o nome da empresa */
+            height: 50px; 
+            margin-right: 15px;
         }
 
-        /* ESTILO DO NOME DA EMPRESA */
-        .logo-text { /* Renomeei para evitar conflito com a classe 'logo' anterior */
-            font-size: 2.2em; /* Um pouco menor para caber com o logo */
+        .logo-text {
+            font-size: 2.2em;
             font-weight: bold;
             letter-spacing: 1px;
-            color: #FFD700; /* Dourado */
-            white-space: nowrap; /* Evita que o texto quebre em várias linhas */
+            color: #FFD700;
+            white-space: nowrap;
         }
 
-        /* Estilo para o conteúdo principal */
+        /* ESTILO DA BARRA DE NAVEGAÇÃO (NAV) */
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1em;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #FFD700;
+        }
+
+        /* ESTILO DO CONTEÚDO PRINCIPAL E SEÇÕES */
         main {
-            padding: 20px;
+            padding: 0;
+        }
+
+        section {
+            padding: 80px 40px; 
             text-align: center;
         }
+
+        section h2 {
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            color: #FFD700;
+        }
+        
+        .section-content p {
+            max-width: 800px;
+            margin: 0 auto 20px auto;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        /* === ESTILOS DO CARROSSEL (CORRIGIDO) === */
+        #gallery {
+            padding: 40px 0;
+            overflow: hidden; 
+            background-color: #005691; 
+        }
+
+        .carousel-track {
+            display: flex;
+            /* 100% (slides originais) + 50% (slides duplicados) = 150% de largura visível */
+            width: 150%; 
+            transition: transform 1s ease-in-out; 
+        }
+
+        .carousel-slide {
+            /* 1/6 da largura total do track, garantindo 3/6 (50%) visíveis */
+            flex: 0 0 16.666%; 
+            box-sizing: border-box;
+            padding: 0 10px;
+            text-align: center;
+        }
+        
+        .carousel-slide img {
+            width: 100%;
+            height: 250px; 
+            object-fit: cover; 
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        /* === ESTILO DE SERVIÇOS === */
+        .services-grid {
+            display: flex;
+            flex-wrap: wrap; 
+            justify-content: center; 
+            gap: 30px; 
+            margin-top: 40px;
+        }
+
+        .service-card {
+            background-color: #FFFFFF; 
+            color: #005691; 
+            border-radius: 10px;
+            padding: 30px;
+            width: 280px; 
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            text-align: left;
+            transition: transform 0.3s;
+        }
+
+        .service-card h3 {
+            color: #005691; 
+            margin-top: 0;
+            font-size: 1.4em;
+            border-bottom: 2px solid #FFD700; 
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        
+        /* === ESTILO DE CONTATO E RODAPÉ (MANTIDO) === */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 10px;
+        }
+        
+        .contact-form label { display: block; text-align: left; margin-bottom: 5px; font-weight: bold; }
+        .contact-form input[type="text"], .contact-form input[type="email"], .contact-form textarea { width: 100%; padding: 15px; margin-bottom: 20px; border: none; border-radius: 5px; background-color: rgba(255, 255, 255, 0.9); color: #005691; font-size: 1em; box-sizing: border-box; }
+        .contact-form textarea { min-height: 150px; }
+        .contact-form button { background-color: #FFD700; color: #005691; border: none; padding: 15px 30px; border-radius: 5px; font-size: 1.1em; font-weight: bold; cursor: pointer; transition: background-color 0.3s; }
+        footer { text-align: center; padding: 30px 20px; background-color: rgba(0, 0, 0, 0.3); font-size: 0.9em; }
+        .social-links { margin-top: 15px; margin-bottom: 10px; }
+        .social-links a { color: white; font-size: 1.5em; margin: 0 10px; transition: color 0.3s; }
+        .social-links a:hover { color: #FFD700; }
     </style>
 </head>
 <body>
@@ -58,13 +179,167 @@
             <img src="nexus.png" alt="Logo da Nexus Solutions">
             <span class="logo-text">Nexus Solutions</span>
         </div>
-        <nav></nav> 
+        
+        <nav>
+            <ul>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#sobre">Sobre Nós</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
     </header>
 
     <main>
-        <h2>Bem-vindo!</h2>
-        <p>A sua solução em tecnologia e inovação.</p>
+        <section id="inicio"> 
+            <h2>Inovação e Tecnologia Sob Medida</h2>
+            <p style="font-size: 1.2em; max-width: none;">A sua solução em tecnologia, impulsionada pela paixão e conhecimento.</p>
+        </section>
+
+        <section id="gallery">
+            <h2>Nossos Projetos em Destaque</h2>
+            
+            <div style="overflow: hidden;">
+                <div class="carousel-track" id="carouselTrack">
+                    
+                    <div class="carousel-slide"><img src="img1.png" alt="Exemplo de Chatbot 1"></div>
+                    <div class="carousel-slide"><img src="img2.png" alt="Exemplo de Automação 2"></div>
+                    <div class="carousel-slide"><img src="img3.png" alt="Exemplo de Landing Page 3"></div>
+                    <div class="carousel-slide"><img src="img4.png" alt="Exemplo de Integração API 4"></div>
+                    <div class="carousel-slide"><img src="img5.png" alt="Exemplo de Interface 5"></div>
+                    <div class="carousel-slide"><img src="img6.png" alt="Exemplo de RPA 6"></div>
+                    
+                    <div class="carousel-slide"><img src="img1.png" alt="Exemplo de Chatbot 1"></div>
+                    <div class="carousel-slide"><img src="img2.png" alt="Exemplo de Automação 2"></div>
+                    <div class="carousel-slide"><img src="img3.png" alt="Exemplo de Landing Page 3"></div>
+                    
+                </div>
+            </div>
+        </section>
+        <section id="servicos"> 
+            <h2>Nossos Serviços Chave</h2>
+            
+            <div class="services-grid">
+                
+                <div class="service-card">
+                    <h3>Chatbots Personalizados</h3>
+                    <p>Desenvolvemos assistentes virtuais inteligentes (chatbots) para automação de vendas, atendimento 24/7 e suporte ao cliente, integrados às suas plataformas.</p>
+                </div>
+                
+                <div class="service-card">
+                    <h3>Automação de Fluxos (RPA)</h3>
+                    <p>Simplifique o trabalho da sua equipe. Automatizamos tarefas repetitivas e fluxos de trabalho internos, aumentando a eficiência operacional e reduzindo erros humanos.</p>
+                </div>
+                
+                <div class="service-card">
+                    <h3>Landing Pages de Conversão</h3>
+                    <p>Criamos páginas de captura focadas em um único objetivo: transformar visitantes em leads e vendas. Design otimizado para o sucesso da sua campanha.</p>
+                </div>
+                
+                <div class="service-card">
+                    <h3>APIs e Integração de Sistemas</h3>
+                    <p>Construímos as "pontes" de dados (APIs) para garantir que seus sistemas, softwares e chatbots funcionem perfeitamente juntos, sem gargalos na comunicação.</p>
+                </div>
+                
+            </div>
+        </section>
+
+        <section id="sobre" style="background-color: rgba(0, 0, 0, 0.15);"> 
+            <h2>Nossa História e Missão</h2>
+            
+            <div class="section-content">
+                <p>
+                    A **Nexus Solutions** nasceu da paixão por tecnologia e da convicção de que a inovação deve ser acessível a todos os negócios. 
+                    Somos movidos pelo conhecimento aprofundado e entusiasmo em encontrar soluções digitais que realmente façam a diferença.
+                </p>
+                <p>
+                    **Nossa Missão:** Ser a ponte entre o seu negócio e a eficiência tecnológica. Entregamos soluções inteligentes, como chatbots e automações, que liberam o potencial da sua equipe para focar no que realmente importa: **o crescimento**.
+                </p>
+                <p>
+                    Com um olhar de entusiasta e uma base sólida de conhecimento, garantimos que cada projeto não seja apenas um código funcional, mas sim uma ferramenta estratégica e futurista para o sucesso de nossos clientes.
+                </p>
+            </div>
+        </section>
+        
+        <section id="contato"> 
+            <h2>Fale Conosco</h2>
+            
+            <div class="contact-info">
+                <p>Pronto para transformar seu negócio com a Nexus Solutions? Entre em contato hoje!</p>
+                <p>E-mail: **nexussolutions548@gmail.com**</p>
+            </div>
+
+            <form name="contato-geral" method="POST" data-netlify="true" class="contact-form">
+                
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" required>
+
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="assunto">Assunto:</label>
+                <input type="text" id="assunto" name="assunto">
+
+                <label for="mensagem">Mensagem:</label>
+                <textarea id="mensagem" name="mensagem" required></textarea>
+
+                <button type="submit">Enviar Mensagem</button>
+            </form>
+            
+            <div style="margin-top: 30px; font-size: 0.9em;">
+                **Lembrete:** Para o formulário funcionar, publique este código no Netlify!
+            </div>
+        </section>
+
     </main>
+
+    <footer>
+        <div class="social-links">
+            <a href="#" target="_blank" title="Nosso LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="#" target="_blank" title="Nosso Twitter/X"><i class="fab fa-twitter"></i></a>
+            <a href="#" target="_blank" title="Nosso Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+        &copy; 2025 Nexus Solutions. Todos os direitos reservados.
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const track = document.getElementById('carouselTrack');
+            // Temos 6 slides originais + 3 duplicados = 9 slides
+            const totalSlidesVisible = 3; // Quantos slides cabem na tela
+            const totalOriginalSlides = 6; // Total de imagens únicas
+            const slideWidthUnit = 100 / (totalOriginalSlides + totalSlidesVisible); // 100% / 9 = 11.111%
+            
+            let currentSlide = 0; // Começa no primeiro conjunto
+
+            function moveCarousel() {
+                currentSlide++;
+
+                // Calcula o valor da translação (porcentagem da largura total)
+                const translateX = -(currentSlide * (100 / (totalOriginalSlides + totalSlidesVisible)) * totalOriginalSlides);
+                
+                track.style.transform = `translateX(${translateX}%)`;
+
+                // Verifica se chegamos ao final do conjunto original de slides
+                if (currentSlide >= totalOriginalSlides / totalSlidesVisible) {
+                    // Após a transição (1 segundo), reseta a posição para o início (sem transição visível)
+                    setTimeout(() => {
+                        track.style.transition = 'none'; // Remove a transição suave
+                        track.style.transform = 'translateX(0)';
+                        currentSlide = 0; // Volta para o início
+
+                        // Reativa a transição suave após um breve momento
+                        setTimeout(() => {
+                            track.style.transition = 'transform 1s ease-in-out';
+                        }, 50); 
+                    }, 1000); // Deve ser igual à duração da transição CSS (1s)
+                }
+            }
+
+            // Inicia o intervalo de 4 segundos (4000 milissegundos)
+            setInterval(moveCarousel, 4000);
+        });
+    </script>
     
 </body>
 </html>
