@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Solutions - Site Oficial</title>
+    <style>
+        /* CSS GERAL */
+        body {
+            background-color: #005691; /* Azul escuro moderado */
+            color: white; /* Cor do texto principal */
+            margin: 0; 
+            padding: 0;
+            min-height: 100vh; 
+            font-family: Arial, sans-serif;
+        }
+
+        /* ESTILO DO CABEÇALHO (HEADER) */
+        header {
+            background-color: rgba(0, 0, 0, 0.3); /* Fundo levemente transparente */
+            padding: 10px 40px; /* Reduzi o padding vertical para acomodar o logo */
+            display: flex; /* Usamos Flexbox para alinhar itens */
+            align-items: center; /* Alinha verticalmente os itens no centro */
+            justify-content: space-between; /* Coloca o logo na esquerda e outros itens na direita (se houver) */
+        }
+
+        /* ESTILO DO LOGO */
+        .logo-container {
+            display: flex; /* Para alinhar o logo com o texto Nexus Solutions se necessário */
+            align-items: center;
+        }
+
+        .logo-container img {
+            height: 50px; /* Altura do logo */
+            margin-right: 15px; /* Espaço entre o logo e o nome da empresa */
+        }
+
+        /* ESTILO DO NOME DA EMPRESA */
+        .logo-text { /* Renomeei para evitar conflito com a classe 'logo' anterior */
+            font-size: 2.2em; /* Um pouco menor para caber com o logo */
+            font-weight: bold;
+            letter-spacing: 1px;
+            color: #FFD700; /* Dourado */
+            white-space: nowrap; /* Evita que o texto quebre em várias linhas */
+        }
+
+        /* Estilo para o conteúdo principal */
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <img src="nexus.png" alt="Logo da Nexus Solutions">
+            <span class="logo-text">Nexus Solutions</span>
+        </div>
+        <nav></nav> 
+    </header>
+
+    <main>
+        <h2>Bem-vindo!</h2>
+        <p>A sua solução em tecnologia e inovação.</p>
+    </main>
+    
+</body>
+</html>
